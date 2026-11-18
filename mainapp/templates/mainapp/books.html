@@ -1,0 +1,55 @@
+{% extends 'mainapp/base.html' %}
+
+{% block title %}Bonnes lectures{% endblock %}
+
+{% block content %}
+
+{% if books %}
+{% for book in books %}
+<p>
+    Auteurs :
+{% for author in book.authors.all %}
+    <a href="{% url 'author_detail' author.id %}">
+        {{ author }}
+    </a>
+    {% if not forloop.last %}, {% endif %}
+{% empty %}
+    Aucun auteur
+{% endfor %}
+    <br>
+    <a href="{% url 'book' book.id %}">
+        {{ book.title }}
+    </a>
+
+    {% if user.is_authenticated and user == book.owner %}
+    <a href="{% url 'delete_book' book.id %}">Supprimer</a>
+    <a href="{% url 'edit_book' book.id %}">Modifier</a>
+    {% endif %}
+</p>
+{% endfor %}
+
+<div class="pagination">
+    {% if books.has_previous %}
+    <a href="?page={{ books.previous_page_number }}">Précédente</a>
+    {% endif %}
+
+    Page {{ books.number }} sur {{ books.paginator.num_pages }}
+
+    {% if books.has_next %}
+    <a href="?page={{ books.next_page_number }}">Suivante</a>
+    {% endif %}
+</div>
+
+{% else %}
+<p>Aucun livre disponible.</p>
+{% endif %}
+
+{% if user.is_authenticated %}
+<a href="/new_book/" class="btn btn-primary mb-3">
+    Ajouter un livre
+</a>
+{% endif %}
+
+<p><a href="/">Retour à l'accueil</a></p>
+
+{% endblock %}

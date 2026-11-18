@@ -1,0 +1,15 @@
+{% extends "mainapp/base.html" %}
+
+{% block content %}
+    <h1>Supprimer cet avis ?</h1>
+
+    <p>{{ review.body }}</p>
+    <p>Note : {{ review.rating }}/5</p>
+
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Confirmer la suppression</button>
+    </form>
+
+    <a href="{% url 'book' book.id %}">Annuler</a>
+{% endblock %}

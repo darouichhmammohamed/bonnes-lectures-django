@@ -1,0 +1,17 @@
+{% extends "mainapp/base.html" %}
+{% load django_bootstrap5 %}
+
+{% block title %}Connexion{% endblock %}
+
+{% block content %}
+<h1>Connexion</h1>
+
+<form method="post">
+    {% csrf_token %}
+    {% bootstrap_form form %}
+    <input type="hidden" name="next" value="{{ next }}">
+    <button type="submit" class="btn btn-primary">
+        Se connecter
+    </button>
+</form>
+{% endblock %}

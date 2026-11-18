@@ -1,0 +1,34 @@
+{% extends 'mainapp/base.html' %}
+
+{% block title %}{{ author }}{% endblock %}
+
+{% block content %}
+    <h1>{{ author }}</h1>
+
+    <h2>Livres de cet auteur</h2>
+
+    <ul>
+        {% for book in author.books.all %}
+            <li>
+                <a href="{% url 'book' book.id %}">
+                    {{ book.title }}
+                </a>
+            </li>
+        {% empty %}
+            <li>Aucun livre associé à cet auteur.</li>
+        {% endfor %}
+    </ul>
+{% if user.is_authenticated and user == author.owner %}
+    <a class="btn btn-primary"
+       href="{% url 'edit_author' author.id %}">
+        Modifier
+    </a>
+
+    <a class="btn btn-danger"
+       href="{% url 'delete_author' author.id %}">
+        Supprimer
+    </a>
+{% endif %}
+
+    <a href="{% url 'authors' %}">Retour à la liste</a>
+{% endblock %}

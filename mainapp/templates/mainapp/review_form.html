@@ -1,0 +1,13 @@
+{% extends "mainapp/base.html" %}
+
+{% block content %}
+    <h1>Ajouter un avis pour {{ book }}</h1>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Enregistrer</button>
+    </form>
+
+    <a href="{% url 'book' book.id %}">Retour au livre</a>
+{% endblock %}

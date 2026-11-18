@@ -1,0 +1,40 @@
+{% load django_bootstrap5 %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    {% bootstrap_css %}
+    <meta charset="UTF-8">
+    <title>{% block title %}Bonnes lectures{% endblock %}</title>
+</head>
+<body>
+    <nav>
+        <a href="/">Accueil</a>
+        <a href="/book/">Liste des livres</a>
+        <a href="/new_book/">Ajouter un livre</a>
+        <a class="nav-link" href="{% url 'authors' %}">
+    Auteurs
+</a>
+{% if user.is_authenticated %}
+    <span>Connecté : {{ user.username }}</span>
+
+    <form method="post"
+          action="{% url 'logout' %}"
+          style="display: inline;">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-outline-secondary">
+            Se déconnecter
+        </button>
+    </form>
+{% else %}
+    <a href="{% url 'login' %}">Se connecter</a>
+{% endif %}
+
+    </nav>
+<div class="container">
+    {% block content %}
+    {% endblock %}
+</div>
+{% bootstrap_javascript %}
+
+</body>
+</html>

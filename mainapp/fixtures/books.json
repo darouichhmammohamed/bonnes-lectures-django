@@ -1,0 +1,41 @@
+[
+{
+  "model": "mainapp.book",
+  "pk": 1,
+  "fields": {
+    "author": "Eric Matthes",
+    "title": "Python Crash Course",
+    "publisher": "No Starch Press",
+    "year": 2023,
+    "isbn": "9781718502703",
+    "backCover": "Un guide pratique pour apprendre la programmation Python.",
+    "cover": true
+  }
+},
+{
+  "model": "mainapp.book",
+  "pk": 2,
+  "fields": {
+    "author": "Antonio Mele",
+    "title": "Django 5 By Example",
+    "publisher": "Packt Publishing",
+    "year": 2025,
+    "isbn": "9781804613061",
+    "backCover": "Un livre pratique pour développer des applications web avec Django.",
+    "cover": true
+  }
+},
+{
+  "model": "mainapp.book",
+  "pk": 3,
+  "fields": {
+    "author": "Aurélien Géron",
+    "title": "Hands-On Machine Learning",
+    "publisher": "O'Reilly Media",
+    "year": 2022,
+    "isbn": "9781098125974",
+    "backCover": "Un ouvrage consacré au machine learning et à l'intelligence artificielle.",
+    "cover": true
+  }
+}
+]
