@@ -123,4 +123,4 @@ Les 22 tests couvrent la validation des ISBN, le champ `IsbnField`, les modèles
 
 ## Auteur
 
-**Mohamed Aziz Darouich Hmam** – étudiant en L2 à l'Université d'Orléans
+**Mohamed Aziz Darouich Hmam** – étudiant en L3 Informatique, parcours MIAGE, à l'Université d'Orléans
